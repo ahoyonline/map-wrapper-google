@@ -76,7 +76,7 @@ var GoogleMapHandler = {
     this.overlays.markers = [];
     this.overlays.polylines = [];
     var overlay;
-    if (features && MapWrapper.mapData.markers) {
+    if (MapWrapper.mapData && MapWrapper.mapData.markers) {
       for (var i = 0; i < MapWrapper.mapData.markers.length; i++) {
         if (MapWrapper.mapData.markers[i].point) {
           overlay = this._drawMarker(MapWrapper.mapData.markers[i], i);
