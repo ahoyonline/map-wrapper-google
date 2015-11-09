@@ -1,6 +1,6 @@
 Package.describe({
   name: 'ahoy:map-wrapper-google',
-  version: '0.0.2',
+  version: '0.0.3',
   summary: 'An implementation using google maps of ahoy:map-wrapper',
   git: 'https://github.com/ahoyonline/map-wrapper-google',
   documentation: 'README.md'
