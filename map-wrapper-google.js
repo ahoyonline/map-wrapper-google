@@ -119,7 +119,7 @@ var GoogleMapHandler = {
     var self = this;
     var featurePath = [];
     if (!polyline.points || polyline.points.length === 0) {
-      MapWrapper.mapData.polylines[featureIdx].editedBy = Meteor.userId ? Meteor.userId : -1;
+      MapWrapper.mapData.polylines[featureIdx].editedBy = MapWrapper.userId;
       var mapBounds = MapWrapper.map.getBounds();
       var lat = (mapBounds.getSouthWest().lat() + mapBounds.getNorthEast().lat()) / 2;
       var lng1 = mapBounds.getSouthWest().lng();
@@ -144,13 +144,12 @@ var GoogleMapHandler = {
       featureIdx: featureIdx,
       type: 'polylines'
     });
-    if (polyline.editedBy === -1 ||
-      polyline.editedBy !== undefined && polyline.editedBy === Meteor.userId) {
+    if (polyline.editedBy === MapWrapper.userId) {
       self._setMapEdit(overlay);
     }
     if (this.settings.editOnSelect) {
       google.maps.event.addListener(overlay, 'click', function(e) {
-        MapWrapper.mapData.polylines[featureIdx].editedBy = Meteor.userId ? Meteor.userId : -1;
+        MapWrapper.mapData.polylines[featureIdx].editedBy = MapWrapper.userId;
         MapWrapper.notifyListener('polylines', featureIdx);
         self._setMapEdit(overlay);
       });
